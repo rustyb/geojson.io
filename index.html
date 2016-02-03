@@ -44,7 +44,7 @@
 <script src='dist/lib.js'></script>
 <script src='dist/site.js'></script>
 <script type='text/javascript'>
-if (/a\.tiles\.mapbox\.com/.test(L.mapbox.config.HTTP_URL)) {
+/*if (/a\.tiles\.mapbox\.com/.test(L.mapbox.config.HTTP_URL)) {
   var _gauges = _gauges || [];
   (function() {
     var t   = document.createElement('script');
@@ -56,7 +56,19 @@ if (/a\.tiles\.mapbox\.com/.test(L.mapbox.config.HTTP_URL)) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(t, s);
   })();
-}
+}*/
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '56b26199bb922a18440001d5');
+    t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+    t.src = 'https://d36ee2fcip1434.cloudfront.net/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
 </script>
 </body>
 </html>
