@@ -40,7 +40,8 @@
     "topojson": "1.6.8",
     "uglify-js": "2.4.1",
     "wellknown": "0.3.1",
-    "xtend": "3.0.0"
+    "xtend": "3.0.0",
+    "leaflet-mapbox-vector-tile": "0.1.6"
   },
   "devDependencies": {
     "browserify": "4.1.11",

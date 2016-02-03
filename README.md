@@ -1,3 +1,10 @@
+## ENTSO-E GeoJSON io version
+
+__This is a slightly customised version of the geojson.io website for the use of entso-e for collecting grid data__
+
+- custom map layers (EE Grid Map)
+- some default metadata fields
+
 [![Circle CI](https://circleci.com/gh/mapbox/geojson.io/tree/gh-pages.svg?style=svg)](https://circleci.com/gh/mapbox/geojson.io/tree/gh-pages)
 
 # geojson.io

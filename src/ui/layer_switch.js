@@ -13,10 +13,18 @@ module.exports = function(context) {
             }, {
                 title: 'Satellite',
                 layer: L.mapbox.tileLayer('mapbox.satellite-full')
+            }, {
+                title: 'EE',
+                layer: L.tileLayer('https://{s}.tiles.mapbox.com/v4/rusty.cm0b8gzp/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicnVzdHkiLCJhIjoib0FjUkJybyJ9.V9QoXck_1Z18MhpwyIE2Og')
             }];
 
         } else {
             layers = [{
+                title: 'Entso-E Grid',
+                layer: L.mapbox.tileLayer('rusty.e6d60062')
+                //layer: L.tileLayer('https://{s}.tiles.mapbox.com/v4/rusty.e6d60062/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicnVzdHkiLCJhIjoib0FjUkJybyJ9.V9QoXck_1Z18MhpwyIE2Og')
+                //layer: L.tileLayer('https://{s}.tiles.mapbox.com/v4/rusty.cm0b8gzp/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoicnVzdHkiLCJhIjoib0FjUkJybyJ9.V9QoXck_1Z18MhpwyIE2Og')
+            }, {
                 title: 'Mapbox',
                 layer: L.mapbox.tileLayer('mapbox.streets')
             }, {

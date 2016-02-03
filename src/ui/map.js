@@ -5,7 +5,7 @@ var popup = require('../lib/popup'),
     escape = require('escape-html'),
     LGeo = require('leaflet-geodesy'),
     writable = false,
-    showStyle = true,
+    showStyle = false,
     makiValues = require('../../data/maki.json'),
     maki = '';
 
@@ -121,6 +121,10 @@ function bindPopup(l) {
     if (!Object.keys(properties).length) properties = { '': '' };
 
     if (l.feature && l.feature.geometry && writable) {
+        if (!('project_id' in properties)) {
+                table += '<tr class=""><th><input type="text" value="project_id"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
         if (l.feature.geometry.type === 'Point' || l.feature.geometry.type === 'MultiPoint') {
             if (!('marker-color' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="marker-color"' + (!writable ? ' readonly' : '') + ' /></th>' +
@@ -138,11 +142,11 @@ function bindPopup(l) {
         if (l.feature.geometry.type === 'LineString' || l.feature.geometry.type === 'MultiLineString' || l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
             if (!('stroke' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="color" value="#555555"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td><input type="color" value="#000000"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('stroke-width' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke-width"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="number" min="0" step="0.1" value="2"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td><input type="number" min="0" step="0.1" value="5"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('stroke-opacity' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke-opacity"' + (!writable ? ' readonly' : '') + ' /></th>' +
@@ -165,6 +169,10 @@ function bindPopup(l) {
         if ((key == 'marker-color' || key == 'stroke' || key == 'fill') && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="color" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+        }
+        else if (key == 'project_id' && writable) {
+            table += '<tr class=""><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input type="text" list="project_id" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-size"><option value="small"><option value="medium"><option value="large"></datalist></td></tr>';
         }
         else if (key == 'marker-size' && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
